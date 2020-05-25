@@ -2,7 +2,9 @@ package com.zalnars.simplecounter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,21 +13,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Set;
-
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "settings" ;
+
     public static int number;
+    public static int changes;
     TextView textView;
     Button remove, add;
     Intent intent;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changes = Integer.parseInt(sharedpreferences.getString("Changes", "1")) ;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        changes = Integer.parseInt(sharedpreferences.getString("Changes", "1")) ;
 
         add = findViewById(R.id.btn_add);
         remove = findViewById(R.id.btn_remove);
@@ -35,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                number++;
+                number += changes;
                textView.setText(Integer.toString(number));
             }
         });
@@ -43,10 +61,11 @@ public class MainActivity extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                number--;
+                number -= changes;
                 textView.setText(Integer.toString(number));
             }
         });
+
 
     }
     public boolean onCreateOptionsMenu(Menu menu) {

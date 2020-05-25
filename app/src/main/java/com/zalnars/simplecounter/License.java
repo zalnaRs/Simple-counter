@@ -10,9 +10,17 @@ public class License extends AppCompatActivity {
     TextView text;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_license);
+
+
 
         text = findViewById(R.id.license_text);
 
