@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/text"
@@ -20,12 +20,15 @@
             android:text="0"
             android:layout_centerInParent="true"/>
 
+
+
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add"
@@ -33,15 +36,17 @@
             android:layout_height="90dp"
             android:text="Add"
             android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.Button"/>
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_alignParentBottom="true"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_remove"
             android:layout_width="wrap_content"
             android:layout_height="90dp"
             android:text="Remove"
             android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_alignParentBottom="true"/>
 
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String MyPREFERENCES = "settings" ;
 
     public static int number;
-    public static int changes;
+    public static int steps;
     TextView textView;
     Button remove, add;
     Intent intent;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        changes = Integer.parseInt(sharedpreferences.getString("Changes", "1")) ;
+        steps = Integer.parseInt(sharedpreferences.getString("Steps", "1")) ;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
-        changes = Integer.parseInt(sharedpreferences.getString("Changes", "1")) ;
+        steps = Integer.parseInt(sharedpreferences.getString("Steps", "1")) ;
 
         add = findViewById(R.id.btn_add);
         remove = findViewById(R.id.btn_remove);
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                number += changes;
+                number += steps;
                textView.setText(Integer.toString(number));
             }
         });
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                number -= changes;
+                number -= steps;
                 textView.setText(Integer.toString(number));
             }
         });
@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_license:
                 intent = new Intent(MainActivity.this, License.class);
                 startActivity(intent);
+                break;
+            case R.id.menu_exit:
+                onBackPressed();
                 break;
         }
       return true;

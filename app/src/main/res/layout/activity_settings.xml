@@ -14,11 +14,11 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Chanages"
+            android:hint="Steps"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <EditText
-                android:id="@+id/settings_changes"
+                android:id="@+id/settings_steps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
@@ -29,7 +29,7 @@
            android:id="@+id/settings_save"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="Save"/>
+           android:text="Save and close" />
 
     </LinearLayout>
 

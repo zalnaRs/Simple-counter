@@ -20,7 +20,7 @@ public class License extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_license);
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         text = findViewById(R.id.license_text);
 

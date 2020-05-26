@@ -14,7 +14,7 @@ public class Settings extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "settings" ;
     Button save;
-    EditText Changes;
+    EditText Steps;
 
     @Override
     public void onBackPressed() {
@@ -27,8 +27,10 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         save = findViewById(R.id.settings_save);
-        Changes = findViewById(R.id.settings_changes);
+        Steps = findViewById(R.id.settings_steps);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
@@ -37,11 +39,13 @@ public class Settings extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
 
-                String text_changes = Changes.getText().toString();
+                String text_steps = Steps.getText().toString();
 
-                editor.putString("Changes", text_changes);
+                editor.putString("Steps", text_steps);
 
                 editor.commit();
+
+                finish();
             }
         });
     }
